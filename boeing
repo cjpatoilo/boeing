@@ -1,0 +1,96 @@
+#!/bin/bash
+# set -e # Exit with nonzero exit code if anything fails
+
+# Statement
+HELP=.bin/help
+REMOTE="$(git config remote.origin.url)"
+DIRECTORY="dist"
+BRANCH="gh-pages"
+
+# Verification
+if [ "$#" -gt 2 ]
+then
+	cat "${HELP}"
+	exit 0
+fi
+
+# Arguments
+if [ -n "${1}" ]
+then
+	DIRECTORY=$1
+	if [[ "${DIRECTORY}" =~ .*['!'@~#\$%:^\&*{}()_+].* ]]
+	then
+		echo -e "\033[0;31mboeing: bad name \"${DIRECTORY}\"";
+	fi
+fi
+if [ -n "${2}" ]
+then
+	BRANCH=$2
+fi
+
+# Options
+if [ "$#" -gt 0 ]
+then
+	for ARGS in "$@"
+	do
+		if [ "${ARGS}" = "-h" ] || [ "${ARGS}" = "--help" ]
+		then
+			cat "${HELP}"
+			exit 0
+		fi
+	done
+	for ARGS in "$@"
+	do
+		if [ "${ARGS}" = "-v" ] || [ "${ARGS}" = "--version" ]
+		then
+			grep -m1 version package.json | awk -F: "{ print $2 }" | sed 's/[", ]//g'
+			exit 0
+		fi
+	done
+	for ARGS in "$@"
+	do
+		if [[ "${ARGS}" == -* ]]
+		then
+			echo -e "\033[0;31mboeing: bad option \"${ARGS}\""
+			exit 0
+		fi
+	done
+fi
+
+# Prepare
+rm -rf node_modules/boeing/"${BRANCH}"
+if [ -z "$(git ls-remote --heads ${REMOTE} ${BRANCH})" ]
+then
+	git clone "${REMOTE}" node_modules/boeing/"${BRANCH}"
+	cd node_modules/boeing/"${BRANCH}" || exit 1
+	git checkout --orphan "${BRANCH}"
+	echo "boeing: creating a new branch \"${BRANCH}\""
+else
+	git clone -b "${BRANCH}" --single-branch "${REMOTE}" node_modules/boeing/"${BRANCH}"
+	cd node_modules/boeing/"${BRANCH}" || exit 1
+	echo "boeing: connecting with branch \"${BRANCH}\""
+fi
+
+# Update
+rm -rf ./*
+cp -rf ../../../"${DIRECTORY}"/* ./
+
+# Diff
+if [ -z "$(git diff --exit-code)" ]
+then
+	cd ..
+	rm -rf "${BRANCH}"
+	echo "boeing: no changes on this push"
+	exit 0
+fi
+
+# Push
+git add .
+git commit -m "boeing: deploy to GitHub Pages: $(git rev-parse --verify HEAD)"
+git push origin "${BRANCH}"
+
+# Clean
+cd ..
+rm -rf "${BRANCH}"
+echo "boeing: deployed successfully on this push"
+exit 0
