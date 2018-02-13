@@ -1,4 +1,4 @@
-<p align="center"><a href="https://cjpatoilo.com/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/images/thumbnail.jpg" alt="Boeing | Deployment to GitHub Pages the easy way."></a></p>
+<p align="center"><a href="https://cjpatoilo.com/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/images/thumbnail.jpg" alt="Boeing | Deployment to GitHub Pages."></a></p>
 
 > Deployment to GitHub Pages.
 
