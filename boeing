@@ -1,20 +1,32 @@
 #!/bin/bash
 # set -e # Exit with nonzero exit code if anything fails
 
-# Statement
-HELP=.bin/help
+# statement
 REMOTE="$(git config remote.origin.url)"
 DIRECTORY="dist"
 BRANCH="gh-pages"
 
-# Verification
+# verification
 if [ "$#" -gt 2 ]
 then
-	cat "${HELP}"
+	cat '
+Usage:
+
+  boeing <directory> [<options>]
+
+Options:
+
+  -h, --help              Display help information about Boeing
+  -v, --version           Output Bower version
+
+Examples:
+
+  boeing
+  boeing dist'
 	exit 0
 fi
 
-# Arguments
+# arguments
 if [ -n "${1}" ]
 then
 	DIRECTORY=$1
@@ -28,7 +40,7 @@ then
 	BRANCH=$2
 fi
 
-# Options
+# options
 if [ "$#" -gt 0 ]
 then
 	for ARGS in "$@"
@@ -57,7 +69,7 @@ then
 	done
 fi
 
-# Prepare
+# prepare
 rm -rf node_modules/boeing/"${BRANCH}"
 if [ -z "$(git ls-remote --heads ${REMOTE} ${BRANCH})" ]
 then
@@ -71,11 +83,11 @@ else
 	echo "boeing: connecting with branch \"${BRANCH}\""
 fi
 
-# Update
+# update
 rm -rf ./*
 cp -rf ../../../"${DIRECTORY}"/* ./
 
-# Diff
+# diff
 if [ -z "$(git diff --exit-code)" ]
 then
 	cd ..
@@ -84,12 +96,12 @@ then
 	exit 0
 fi
 
-# Push
+# push
 git add .
 git commit -m "boeing: deploy to GitHub Pages: $(git rev-parse --verify HEAD)"
 git push origin "${BRANCH}"
 
-# Clean
+# clean
 cd ..
 rm -rf "${BRANCH}"
 echo "boeing: deployed successfully on this push"

@@ -1,4 +1,4 @@
-<p align="center"><a href="https://cjpatoilo.com/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/images/thumbnail.jpg" alt="Boeing | Deployment to GitHub Pages."></a></p>
+<p align="center"><a href="https://github.com/cjpatoilo/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/artwork.png" alt="Boeing | Deployment to GitHub Pages."></a></p>
 
 > Deployment to GitHub Pages.
 
@@ -27,7 +27,7 @@ $ npm i -g boeing
 **Install with Yarn**
 
 ```sh
-$ yarn add boeing
+$ yarn global add boeing
 ```
 
 **Run with npx (without installing!)**
@@ -44,12 +44,7 @@ $ boeing --help
 
   Usage:
 
-    boeing <command> [<args>] [<options>]
-
-  Commands:
-
-    help                    Display help information about Boeing
-    version                 Output Bower version
+    boeing <directory> [<options>]
 
   Options:
 
@@ -59,12 +54,11 @@ $ boeing --help
   Examples:
 
     boeing
-    boeing help
-    boeing --version
-
-See 'boeing help <command>' for more information on a specific command.
+    boeing dist
 
 ```
+
+Note: If there is no `directory` defined, dist is default
 
 
 ## Contributing
