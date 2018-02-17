@@ -30,7 +30,7 @@ $ npm i -g boeing
 $ yarn global add boeing
 ```
 
-**Run with npx (without installing!)**
+**Run with npx (without installing)**
 
 ```sh
 $ npx boeing
