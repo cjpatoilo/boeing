@@ -5,12 +5,7 @@
 REMOTE="$(git config remote.origin.url)"
 DIRECTORY="dist"
 BRANCH="gh-pages"
-
-# verification
-if [ "$#" -gt 2 ]
-then
-	cat '
-Usage:
+HELP="Usage:
 
   boeing <directory> [<options>]
 
@@ -22,8 +17,28 @@ Options:
 Examples:
 
   boeing
-  boeing dist'
-	exit 0
+  boeing dist"
+
+# options
+for ARGS in "$@"
+do
+	if [ "${ARGS}" = "-h" ] || [ "${ARGS}" = "--help" ]
+	then
+		echo "${HELP}"
+		exit 0
+	fi
+	if [ "${ARGS}" = "-v" ] || [ "${ARGS}" = "--version" ]
+	then
+		seq "${#@}" | grep -m1 version package.json | awk -F: "{ print ${INDEX} }" | sed -E -e 's/[version:",[:blank:]]+//g'
+		exit 0
+	fi
+done
+
+# verification
+if [ "$#" -gt 1 ]
+then
+	echo -e "\033[0;31m${HELP}"
+	exit 2
 fi
 
 # arguments
@@ -32,41 +47,13 @@ then
 	DIRECTORY=$1
 	if [[ "${DIRECTORY}" =~ .*['!'@~#\$%:^\&*{}()_+].* ]]
 	then
-		echo -e "\033[0;31mboeing: bad name \"${DIRECTORY}\"";
+		echo -e "\033[0;31mboeing: bad name \"${DIRECTORY}\""
+		exit 2
 	fi
 fi
 if [ -n "${2}" ]
 then
 	BRANCH=$2
-fi
-
-# options
-if [ "$#" -gt 0 ]
-then
-	for ARGS in "$@"
-	do
-		if [ "${ARGS}" = "-h" ] || [ "${ARGS}" = "--help" ]
-		then
-			cat "${HELP}"
-			exit 0
-		fi
-	done
-	for ARGS in "$@"
-	do
-		if [ "${ARGS}" = "-v" ] || [ "${ARGS}" = "--version" ]
-		then
-			grep -m1 version package.json | awk -F: "{ print $2 }" | sed 's/[", ]//g'
-			exit 0
-		fi
-	done
-	for ARGS in "$@"
-	do
-		if [[ "${ARGS}" == -* ]]
-		then
-			echo -e "\033[0;31mboeing: bad option \"${ARGS}\""
-			exit 0
-		fi
-	done
 fi
 
 # prepare

@@ -1,6 +1,6 @@
 {
 	"name": "boeing",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Deployment to GitHub Pages.",
 	"homepage": "https://cjpatoilo.com/boeing",
 	"repository": "cjpatoilo/boeing",
@@ -32,7 +32,7 @@
 		"ava": "^0.25.0",
 		"boeing": "latest",
 		"editorconfig-tools": "^0.1.1",
-		"eslint": "^4.17.0",
+		"eslint": "^4.18.0",
 		"eslint-config-styled": "0.0.2",
 		"husky": "^0.14.3",
 		"marshmallow": "latest",

@@ -30,7 +30,7 @@ $ npm i -g boeing
 $ yarn global add boeing
 ```
 
-**Run with npx (without installing!)**
+**Run with npx (without installing)**
 
 ```sh
 $ npx boeing
@@ -58,7 +58,7 @@ $ boeing --help
 
 ```
 
-Note: If there is no `directory` defined, dist is default
+Note: If there is no `directory` defined, `dist` is default.
 
 
 ## Contributing
