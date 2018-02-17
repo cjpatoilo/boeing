@@ -58,7 +58,7 @@ $ boeing --help
 
 ```
 
-Note: If there is no `directory` defined, dist is default
+Note: If there is no `directory` defined, `dist` is default.
 
 
 ## Contributing
