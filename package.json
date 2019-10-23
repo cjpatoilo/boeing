@@ -41,7 +41,7 @@
 		"rimraf": "^3.0.0"
 	},
 	"scripts": {
-		"deploy": "marshmallow -o docs -i artwork.psd -t Boeing -d 'Deployment to GitHub Pages.' -f -m && inject-ga docs/index.html -o docs/index.html -c 'UA-24389952-13' && boeing docs && rimraf docs",
+		"deploy": "marshmallow -o docs -i artwork.psd -f -m && inject-ga docs/index.html -o docs/index.html -c 'UA-24389952-13' && boeing docs && rimraf docs",
 		"lint": "prettier-standard --check",
 		"test": "nyc ava"
 	},
