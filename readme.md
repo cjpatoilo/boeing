@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/cjpatoilo/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/artwork.png" alt="Boeing | Deployment to GitHub Pages."></a></p>
+<a href="https://github.com/cjpatoilo/boeing"><img width="100%" src="https://cjpatoilo.com/boeing/artwork.png" alt="Boeing | Deployment to GitHub Pages."></a>
 
 > Deployment to GitHub Pages.
 
@@ -36,6 +36,8 @@ $ yarn global add boeing
 $ npx boeing
 ```
 
+Note: Install as a `global` tool or as `devDependencies`.
+
 
 ## Usage
 
@@ -53,19 +55,16 @@ $ boeing --help
 
   Examples:
 
-    boeing
     boeing dist
 
 ```
 
-Note: If there is no `directory` defined, `dist` is default.
-
 
 ## Contributing
 
-Want to contribute? Follow these [recommendations](.github/contributing.md).
+Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/boeing#contributing).
 
 
 ## License
 
-Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](license).
+Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://github.com/cjpatoilo/boeing#license).
