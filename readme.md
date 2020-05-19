@@ -16,7 +16,7 @@
 Boeing provides an automated setup for a faster and secure deployment to GitHub Pages. Hope you enjoy!
 
 
-## Install
+## Getting Started
 
 **Install with npm**
 
