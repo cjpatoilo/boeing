@@ -10,11 +10,9 @@
 [![Download Status](https://img.shields.io/npm/dt/boeing.svg)](https://www.npmjs.com/package/boeing)
 [![Gitter Chat](https://img.shields.io/badge/gitter-join_the_chat-4cc61e.svg)](https://gitter.im/cjpatoilo/boeing)
 
-
 ## Why it's awesome
 
 Boeing provides an automated setup for a faster and secure deployment to GitHub Pages. Hope you enjoy!
-
 
 ## Getting Started
 
@@ -38,7 +36,6 @@ $ npx boeing
 
 Note: Install as a `global` tool or as `devDependencies`.
 
-
 ## Usage
 
 ```
@@ -59,12 +56,10 @@ $ boeing --help
 
 ```
 
-
 ## Contributing
 
-Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/boeing#contributing).
-
+Want to contribute? Follow these [recommendations](https://github.com/cjpatoilo/boeing/contribute).
 
 ## License
 
-Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://github.com/cjpatoilo/boeing#license).
+Designed with ♥ by [CJ Patoilo](https://twitter.com/cjpatoilo). Licensed under the [MIT License](https://cjpatoilo.com/license).
