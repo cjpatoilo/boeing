@@ -1,67 +1,60 @@
 {
-	"name": "boeing",
-	"version": "0.2.0",
-	"description": "Deployment to GitHub Pages.",
-	"homepage": "https://cjpatoilo.com/boeing",
-	"repository": "cjpatoilo/boeing",
-	"license": "MIT",
-	"author": "CJ Patoilo <cjpatoilo@gmail.com>",
-	"private": false,
-	"bin": "boeing",
-	"keywords": [
-		"automation",
-		"deploy",
-		"deployment",
-		"growth",
-		"implementation",
-		"performance",
-		"progress",
-		"rescue",
-		"rollback",
-		"save",
-		"safety"
-	],
-	"ignore": [
-		".appveyor.yml",
-		".editorconfig",
-		".github",
-		".gitignore",
-		".travis.yml"
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"ava": "^2.4.0",
-		"boeing": "latest",
-		"husky": "^3.0.9",
-		"inject-ga": "^0.2.4",
-		"lint-staged": "^9.4.2",
-		"marshmallow": "latest",
-		"nyc": "^14.1.1",
-		"prettier-standard": "^15.0.1",
-		"rimraf": "^3.0.0"
-	},
-	"scripts": {
-		"deploy": "marshmallow -o docs -i artwork.psd -f -m && inject-ga docs/index.html -o docs/index.html -c 'UA-24389952-13' && boeing docs && rimraf docs",
-		"lint": "prettier-standard --check",
-		"test": "nyc ava"
-	},
-	"engines": {
-		"node": "^12.13.0"
-	},
-	"prettier": {
-		"jsxSingleQuote": false,
-		"trailingComma": "all"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged",
-			"pre-push": "npm run deploy"
-		}
-	},
-	"lint-staged": {
-		"src/**/*": [
-			"prettier-standard --format",
-			"git add"
-		]
-	}
+  "name": "boeing",
+  "version": "0.2.0",
+  "description": "Deployment to GitHub Pages.",
+  "homepage": "https://cjpatoilo.com/boeing",
+  "repository": "cjpatoilo/boeing",
+  "license": "MIT",
+  "author": "CJ Patoilo <cjpatoilo@gmail.com>",
+  "private": false,
+  "bin": "boeing",
+  "keywords": [
+    "automation",
+    "deploy",
+    "deployment",
+    "growth",
+    "implementation",
+    "performance",
+    "progress",
+    "rescue",
+    "rollback",
+    "save",
+    "safety"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^3.8.2",
+    "boeing": "latest",
+    "husky": "^4.2.5",
+    "inject-ga": "^0.2.4",
+    "lint-staged": "^10.2.9",
+    "marshmallow": "latest",
+    "nyc": "^15.1.0",
+    "prettier-standard": "^16.3.0",
+    "rimraf": "^3.0.2"
+  },
+  "scripts": {
+    "deploy": "marshmallow -o docs -i artwork.psd -f -m && inject-ga docs/index.html -o docs/index.html -c 'UA-24389952-13' && boeing docs && rimraf docs",
+    "lint": "prettier-standard --check",
+    "test": "nyc ava"
+  },
+  "engines": {
+    "node": "^12.18.0",
+    "npm": "^6.14.5"
+  },
+  "prettier": {
+    "jsxSingleQuote": false,
+    "trailingComma": "all"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier-standard --format",
+      "git add"
+    ]
+  }
 }
